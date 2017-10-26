@@ -1,0 +1,19 @@
+#!/usr/bin/python
+
+import re
+import sys
+
+if len(sys.argv) < 2:
+    print "Please specify file to be compressed"
+    sys.exit(1)
+
+out = ''	
+
+with open(sys.argv[1]) as fd:
+	for line in fd.readlines():
+		m = re.search('[a-zA-Z]', line)
+	 	if m:
+			out += line.replace('\n',';').replace('"','\'')
+            
+
+print 'python -c "' + out + '"'
